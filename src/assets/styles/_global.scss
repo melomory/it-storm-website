@@ -1,0 +1,23 @@
+@import "variables";
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: $container-width;
+  margin: 0 auto;
+}
+
+.mat-mdc-menu-content {
+  padding: 0 !important;
+  background-color: #fff;
+}
+
+.mat-mdc-menu-item-text {
+  font-family: "Montserrat", sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 16px !important;
+}
