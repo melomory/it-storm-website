@@ -4,11 +4,60 @@ html,
 body {
   margin: 0;
   padding: 0;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  height: 100%;
+}
+
+.content {
+  flex: 1 0 auto;
 }
 
 .container {
   max-width: $container-width;
   margin: 0 auto;
+}
+
+.button {
+  background: #709fdc;
+  border-radius: 5px;
+  color: #fff;
+  border: none;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.6;
+  }
+
+  &_small {
+    padding: 10px 20px;
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+
+  &_big {
+    padding: 15px 20px;
+    font-size: 1rem;
+    font-weight: 400;
+  }
+}
+
+.input {
+  box-sizing: border-box;
+  padding: 17px 20px;
+  border: 2px solid #709fdc;
+  border-radius: 3px;
+
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 0.875rem;
+  outline: none;
+  color: #709fdc;
+}
+
+.input::placeholder {
+  color: #a8aba7;
 }
 
 .mat-mdc-menu-content {
@@ -20,4 +69,13 @@ body {
   font-family: "Montserrat", sans-serif !important;
   font-weight: 500 !important;
   font-size: 16px !important;
+}
+
+.mat-mdc-dialog-panel {
+  --mat-dialog-container-max-width: 727px;
+}
+
+.mat-mdc-dialog-container {
+  padding: 0 !important;
+  --mdc-dialog-container-shape: 10px;
 }

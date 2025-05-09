@@ -1,5 +1,17 @@
 @font-face {
   font-family: "Montserrat";
+  src: url(../../../public/assets/fonts/Montserrat-Regular.ttf);
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Montserrat";
   src: url(../../../public/assets/fonts/Montserrat-Medium.ttf);
   font-weight: 500;
+}
+
+@font-face {
+  font-family: "Lora";
+  src: url(../../../public/assets/fonts/Lora-Regular.woff);
+  font-weight: 400;
 }

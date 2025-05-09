@@ -10,8 +10,11 @@ import { MatMenuModule } from "@angular/material/menu";
   styleUrl: "./header.component.scss",
 })
 export class HeaderComponent {
-  isLoggedIn = true;
+  isLoggedIn = false;
 
+  /**
+   * Logs the user out.
+   */
   logout() {
     // TODO
   }
