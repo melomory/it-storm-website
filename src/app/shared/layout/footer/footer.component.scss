@@ -1,0 +1,139 @@
+:host {
+  flex: 0 0 auto;
+}
+
+.footer {
+  background: #b9d5fd;
+  padding-top: 40px;
+  padding-bottom: 54px;
+}
+
+.footer__top {
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+
+  .logo {
+    margin-right: 40px;
+  }
+}
+
+.footer__nav-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.footer__nav-menu-item {
+  &:hover {
+    opacity: 0.6;
+  }
+}
+
+.footer__nav-menu-link {
+  text-decoration: none;
+  color: #071739;
+}
+
+.footer__info {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 6px 0;
+  display: flex;
+  gap: 60px;
+}
+
+.footer__info-item {
+  max-width: 253px;
+}
+
+.footer__info-item-title {
+  font-weight: 500;
+  font-size: 1rem;
+  margin: 0 0 10px 0;
+  padding: 0;
+  color: #709fdc;
+}
+
+.footer__info-item-title-social {
+  margin: 0 0 15px 0;
+}
+
+.footer__info-item-text {
+  color: #071739;
+  line-height: 130%;
+  padding: 0;
+  margin: 0 0 10px 0;
+
+  &_small {
+    font-size: 0.875rem;
+  }
+}
+
+.footer__info-item-text-link {
+  display: block;
+  text-decoration: none;
+}
+
+.footer__socials {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.footer__bottom {
+  color: #709fdc;
+}
+
+.free-consultation-popup {
+  padding: 95px 160px;
+  position: relative;
+  text-align: center;
+  background: #fff;
+  border-radius: 10px;
+
+  &__close {
+    position: absolute;
+    cursor: pointer;
+    top: 30px;
+    right: 30px;
+    outline: none;
+    border: none;
+    background: none;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__form-title {
+    font-family: 'Lora';
+    font-weight: 400;
+    line-height: 130%;
+    font-size: 2.375rem;
+    color: #709fdc;
+    max-width: 406px;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__form-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  &__form-button {
+    margin-top: 20px;
+  }
+
+  // .order-call-popup-content div {
+  //   font-size: 20px;
+  //   margin-bottom: 5px;
+  // }
+}
