@@ -1,0 +1,70 @@
+<main class="signup">
+  <div class="container signup__container">
+    <form class="signup__form" [formGroup]="signupForm">
+      <h1 class="signup__form-title">Регистрация на сайте</h1>
+      <div class="signup__form-inputs">
+        <input
+          type="text"
+          class="input"
+          placeholder="Ваше имя"
+          formControlName="name"
+          [ngStyle]="{
+            'border-color':
+              signupForm.get('name')?.invalid &&
+              (signupForm.get('name')?.dirty || signupForm.get('name')?.touched)
+                ? 'red'
+                : ''
+          }"
+        />
+        <input
+          type="email"
+          class="input"
+          placeholder="Электронная почта"
+          formControlName="email"
+          [ngStyle]="{
+            'border-color':
+              signupForm.get('email')?.invalid &&
+              (signupForm.get('email')?.dirty ||
+                signupForm.get('email')?.touched)
+                ? 'red'
+                : ''
+          }"
+        />
+        <input
+          type="password"
+          class="input"
+          placeholder="Пароль"
+          formControlName="password"
+          [ngStyle]="{
+            'border-color':
+              signupForm.get('password')?.invalid &&
+              (signupForm.get('password')?.dirty ||
+                signupForm.get('password')?.touched)
+                ? 'red'
+                : ''
+          }"
+        />
+        <div class="signup__form-inputs-checkbox">
+          <input type="checkbox" id="is-agree" formControlName="isAgree" />
+          <label for="is-agree"
+            >Я принимаю <a routerLink="/legal" fragment="terms">условия пользовательского соглашения</a> и
+            даю
+            <a routerLink="/legal" fragment="consent">согласие на обработку персональных данных</a>.</label
+          >
+        </div>
+      </div>
+      <button
+        class="button button_big signup__form-button"
+        [disabled]="signupForm.invalid"
+      >
+        Зарегистрироваться
+      </button>
+      <div class="signup__form-link">
+        У вас уже есть аккаунт? <a routerLink="/login">Войдите</a>
+      </div>
+    </form>
+    <div class="page-image">
+      <img src="./assets/images/page/signup/signup.png" alt="signup" />
+    </div>
+  </div>
+</main>
