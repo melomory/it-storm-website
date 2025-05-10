@@ -1,0 +1,75 @@
+.signup {
+  &__container {
+    display: flex;
+    align-items: center;
+    padding-top: 120px;
+    padding-bottom: 120px;
+  }
+
+  &__form {
+    max-width: 422px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__form-title {
+    font-family: 'Lora';
+    font-weight: 400;
+    line-height: 130%;
+    font-size: 2.375rem;
+    color: #709fdc;
+    padding: 0;
+    margin: 0 0 40px 0;
+  }
+
+  &__form-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  &__form-button {
+    margin-top: 40px;
+  }
+
+  &__form-inputs-checkbox {
+    max-width: 422px;
+    display: flex;
+    align-items: start;
+
+    input {
+      margin: 2px 0 0;
+    }
+
+    label {
+      font-size: 14px;
+      line-height: 130%;
+      margin-left: 10px;
+
+      a {
+        color: #709fdc;
+      }
+    }
+  }
+
+  &__form-link {
+    margin-top: 10px;
+    font-size: 14px;
+
+    a {
+      text-decoration: none;
+      margin-left: 5px;
+      color: #709fdc;
+    }
+  }
+}
+
+.page-image {
+  margin-left: 185px;
+
+  img {
+    vertical-align: bottom;
+    border-radius: 5px;
+  }
+}
