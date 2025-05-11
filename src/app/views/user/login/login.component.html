@@ -1,0 +1,56 @@
+<main class="login">
+  <div class="container login__container">
+    <form class="login__form" [formGroup]="loginForm">
+      <h1 class="login__form-title">Войти в личный кабинет</h1>
+      <div class="login__form-inputs">
+        <input
+          type="email"
+          class="input"
+          placeholder="Электронная почта"
+          formControlName="email"
+          [ngStyle]="{
+            'border-color':
+              loginForm.get('email')?.invalid &&
+              (loginForm.get('email')?.dirty || loginForm.get('email')?.touched)
+                ? 'red'
+                : ''
+          }"
+        />
+        <input
+          type="password"
+          class="input"
+          placeholder="Пароль"
+          formControlName="password"
+          [ngStyle]="{
+            'border-color':
+              loginForm.get('password')?.invalid &&
+              (loginForm.get('password')?.dirty ||
+                loginForm.get('password')?.touched)
+                ? 'red'
+                : ''
+          }"
+        />
+        <div class="login__form-inputs-checkbox">
+          <input
+            type="checkbox"
+            id="remember-me"
+            formControlName="rememberMe"
+          />
+          <label for="remember-me">Запомнить меня</label>
+        </div>
+      </div>
+      <button
+        class="button button_big login__form-button"
+        [disabled]="loginForm.invalid"
+      >
+        Войти
+      </button>
+      <div class="login__form-link">
+        Нет аккаунта?? <a routerLink="/signup">Пройдите регистрацию</a>
+      </div>
+    </form>
+    <div class="page-image">
+      <img src="./assets/images/page/login/login.png" alt="login" />
+    </div>
+  </div>
+</main>

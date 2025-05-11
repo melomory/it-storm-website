@@ -13,6 +13,13 @@ export const routes: Routes = [
             (c) => c.SignupComponent
           ),
       },
+      {
+        path: 'login',
+        loadComponent: () =>
+          import('./views/user/login/login.component').then(
+            (c) => c.LoginComponent
+          ),
+      },
     ],
   },
 ];
