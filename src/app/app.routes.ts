@@ -20,6 +20,11 @@ export const routes: Routes = [
             (c) => c.LoginComponent
           ),
       },
+      {
+        path: 'legal',
+        loadComponent: () =>
+          import('./views/legal/legal.component').then((c) => c.LegalComponent),
+      },
     ],
   },
 ];
