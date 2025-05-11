@@ -86,3 +86,20 @@ body {
   padding: 0 !important;
   --mdc-dialog-container-shape: 10px;
 }
+
+.owl-dots {
+  z-index: 1;
+  position: absolute;
+  margin: 0;
+  bottom: 12px;
+  left: 47%;
+}
+
+.owl-theme .owl-dots .owl-dot span {
+  background: transparent;
+  border: 1px solid #fff;
+}
+
+.owl-theme .owl-dots .owl-dot.active span {
+  background: #fff;
+}
