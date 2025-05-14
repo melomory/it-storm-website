@@ -305,3 +305,111 @@
     font-weight: 500;
   }
 }
+
+.popular-articles__items {
+  display: flex;
+  justify-content: space-between;
+}
+
+.popular-articles__title {
+  font-family: 'Lora', serif;
+  font-weight: 400;
+  font-size: 38px;
+  color: #709fdc;
+  margin: 0 0 40px 0;
+  letter-spacing: 7%;
+}
+
+.article-card {
+  max-width: 292px;
+  height: 571px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.article-card__tag {
+  position: absolute;
+  display: block;
+  font-family: 'Montserrat', sans-serif;
+  color: #709fdc;
+  margin-top: 15px;
+  font-size: 11px;
+  padding: 10px 18px;
+  background-color: #fff;
+  border-radius: 5px;
+  top: -4px;
+  right: 10px;
+}
+
+.article-card__image {
+  width: 291px;
+  height: 291px;
+  border-radius: 5px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.article-card__title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  color: #709fdc;
+  margin-top: 15px;
+  font-size: 20px;
+  line-height: 130%;
+}
+
+.article-card__description {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  line-height: 130%;
+  font-size: 14px;
+}
+
+.article-card__info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.article-card__link {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  line-height: 130%;
+  font-size: 16px;
+  color: #709fdc;
+  margin-top: auto;
+}
+
+.popular-articles__link {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  line-height: 130%;
+  font-size: 20px;
+  color: #709fdc;
+  text-decoration: none;
+  display: block;
+  text-align: right;
+  margin-top: 40px;
+  margin-right: 30px;
+  position: relative;
+
+  &::after {
+    border-style: solid;
+    border-width: 1px 1px 0 0;
+    content: '';
+    display: inline-block;
+    height: 9px;
+    width: 9px;
+    right: -25px;
+    position: relative;
+    top: 8px;
+    transform: rotate(-45deg);
+    vertical-align: top;
+    rotate: 90deg;
+    position: absolute;
+  }
+}
