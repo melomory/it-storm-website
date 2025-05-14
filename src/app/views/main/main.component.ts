@@ -42,6 +42,30 @@ export class MainComponent {
     },
   };
 
+  customOptionsReviews: OwlOptions = {
+    loop: true,
+    mouseDrag: false,
+    touchDrag: false,
+    pullDrag: false,
+    margin: 26,
+    dots: false,
+    navSpeed: 700,
+    navText: ['', ''],
+    items: 1,
+    nav: false,
+    responsive: {
+      0: {
+        items: 1,
+      },
+      400: {
+        items: 2,
+      },
+      740: {
+        items: 3,
+      },
+    },
+  };
+
   @ViewChild('popup') popup!: TemplateRef<ElementRef>;
   dialogRef: MatDialogRef<any> | null = null; // eslint-disable-line @typescript-eslint/no-explicit-any
 
