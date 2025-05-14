@@ -418,6 +418,10 @@
   }
 }
 
+.reviews {
+  margin-bottom: 120px;
+}
+
 .reviews__title {
   font-family: 'Lora', serif;
   font-weight: 400;
@@ -496,4 +500,59 @@
       opacity: 0.6;
     }
   }
+}
+
+.contacts {
+}
+
+.contacts__container {
+  display: flex;
+  gap: 26px;
+}
+
+.contacts__map {
+  width: 607px;
+}
+
+.contacts__info-title {
+  font-family: 'Lora', serif;
+  font-weight: 400;
+  font-size: 38px;
+  color: #709fdc;
+  margin: 0 0 20px 0;
+  letter-spacing: 7%;
+}
+
+.contacts__info-item {
+  max-width: 500px;
+  margin-bottom: 20px;
+}
+
+.contacts__info-item-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  line-height: 130%;
+  font-size: 20px;
+  color: #709fdc;
+  margin-bottom: 10px;
+}
+
+.contacts__info-item-content {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  line-height: 130%;
+  font-size: 14px;
+  color: #071739;
+}
+
+.contacts__info-item-content-link {
+  text-decoration: none;
+  display: block;
+  color: #071739;
+}
+
+.contacts__socials {
+  display: flex;
+  gap: 20px;
 }
