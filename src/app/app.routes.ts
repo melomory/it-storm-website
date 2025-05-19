@@ -7,6 +7,11 @@ export const routes: Routes = [
     component: LayoutComponent,
     children: [
       {
+        path: '',
+        loadComponent: () =>
+          import('./views/main/main.component').then((c) => c.MainComponent),
+      },
+      {
         path: 'signup',
         loadComponent: () =>
           import('./views/user/signup/signup.component').then(
