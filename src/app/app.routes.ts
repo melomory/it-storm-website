@@ -30,6 +30,13 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./views/legal/legal.component').then((c) => c.LegalComponent),
       },
+      {
+        path: 'articles',
+        loadComponent: () =>
+          import('./views/articles/articles.component').then(
+            (c) => c.ArticlesComponent
+          ),
+      },
     ],
   },
 ];
