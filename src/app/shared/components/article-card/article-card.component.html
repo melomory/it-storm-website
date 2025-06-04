@@ -1,16 +1,17 @@
 <div class="article-card">
-  <span class="article-card__tag">Фриланс</span>
+  @if (article.category) {
+  <span class="article-card__tag">{{ article.category }}</span>
+  }
+
   <div
     class="article-card__image"
-    style="background-image: url(./assets/images/page/main/articles/image1.png)"
+    style="background-image: url({{ serverStaticPath + article.image }})"
   ></div>
-  <div class="article-card__title">6 сайтов для повышения продуктивности</div>
+  <div class="article-card__title">{{ article.title }}</div>
   <div class="article-card__description">
-    Хотите проводить время в сети с пользой? Наша подборка из шести полезных, но
-    малоизвестных сайтов увеличит вашу продуктивность, поможет успевать больше в
-    течение дня и всегда быть на шаг впереди!
+    {{ article.description }}
   </div>
-  <div class="article-card__link">
-    <a href="#">Читать дальше</a>
-  </div>
+  <a [routerLink]="'/articles/' + article.url" class="article-card__link"
+    >Читать дальше</a
+  >
 </div>

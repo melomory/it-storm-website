@@ -59,30 +59,55 @@
     </div>
 
     <div class="articles__items">
-      <app-article-card></app-article-card>
-      <app-article-card></app-article-card>
-      <app-article-card></app-article-card>
-      <app-article-card></app-article-card>
-      <app-article-card></app-article-card>
-      <app-article-card></app-article-card>
-      <app-article-card></app-article-card>
-      <app-article-card></app-article-card>
+      @for (article of articles?.items; track $index) {
+      <app-article-card [article]="article"></app-article-card>
+      } @empty { @if (articles?.count === 0) {
+      <p>Статьи не найдены. Попробуйте изменить параметры поиска</p>
+      } }
     </div>
 
+    @if (articles && articles.pages > 1) {
     <div class="pagination">
-      <button class="pagination__arrow">
+      <button
+        class="pagination__arrow"
+        [class.pagination__arrow_disabled]="activeParams.page === 1"
+        (click)="openPrevPage()"
+      >
         <i class="chevron chevron_left"></i>
       </button>
       <div class="pagination__pages">
-        <a class="pagination__page-link pagination__page-link_active">1</a>
+        @for (page of pages; track $index) {
+        <a
+          tabindex="0"
+          role="button"
+          class="pagination__page-link"
+          [class.pagination__page-link_active]="
+            this.activeParams.page
+              ? this.activeParams.page === page
+              : page === 1
+          "
+          (click)="openPage(page)"
+          (keydown)="openPage(page)"
+          >{{ page }}</a
+        >
+        }
+
+        <!-- <a class="pagination__page-link pagination__page-link_active">1</a>
         <a class="pagination__page-link">2</a>
         <a class="pagination__page-link">3</a>
         <a class="pagination__page-link">4</a>
-        <a class="pagination__page-link">5</a>
+        <a class="pagination__page-link">5</a> -->
       </div>
-      <button class="pagination__arrow">
-        <i class="chevron chevron_right chevron_active"></i>
+      <button
+        class="pagination__arrow"
+        [class.pagination__arrow_disabled]="
+          activeParams.page === articles.pages
+        "
+        (click)="openNextPage()"
+      >
+        <i class="chevron chevron_right"></i>
       </button>
     </div>
+    }
   </div>
 </main>

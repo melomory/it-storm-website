@@ -71,12 +71,15 @@ export class MainComponent {
 
   private dialog: MatDialog = inject(MatDialog);
 
+  /**
+   * Запросить услугу.
+   */
   requestService() {
     this.dialogRef = this.dialog.open(this.popup);
   }
 
   /**
-   * Closes popup.
+   * Закрыть попап.
    */
   closePopup() {
     this.dialogRef?.close();
