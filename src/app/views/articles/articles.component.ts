@@ -6,10 +6,13 @@ import { debounceTime } from 'rxjs';
 import { ActiveParamsType } from '../../models/active-params.type';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ActivePramUtil } from '../../shared/utils/active-params.util';
+import { CategoryFilterComponent } from '../../shared/components/category-filter/category-filter.component';
+import { Category } from '../../models/category.type';
+import { CategoryService } from '../../shared/services/category.service';
 
 @Component({
   selector: 'app-articles',
-  imports: [ArticleCardComponent],
+  imports: [ArticleCardComponent, CategoryFilterComponent],
   templateUrl: './articles.component.html',
   styleUrl: './articles.component.scss',
 })
@@ -17,10 +20,20 @@ export class ArticlesComponent implements OnInit {
   private articleService: ArticleService = inject(ArticleService);
   private router: Router = inject(Router);
   private activatedRoute: ActivatedRoute = inject(ActivatedRoute);
+  private categoryService: CategoryService = inject(CategoryService);
 
   articles!: Articles;
   activeParams: ActiveParamsType = { categories: [] };
   pages: number[] = [];
+
+  get categories(): Category[] {
+    return this.categoryService.categories.filter(
+      (item) =>
+        this.activeParams.categories?.some(
+          (category) => category === item.url
+        ) ?? false
+    );
+  }
 
   ngOnInit() {
     this.activatedRoute.queryParams
@@ -84,5 +97,16 @@ export class ArticlesComponent implements OnInit {
         queryParams: this.activeParams,
       });
     }
+  }
+
+  removeAppliedFilter(category: Category) {
+    this.activeParams.categories = this.activeParams.categories?.filter(
+      (item) => item !== category.url
+    );
+
+    this.activeParams.page = 1;
+    this.router.navigate(['/articles'], {
+      queryParams: this.activeParams,
+    });
   }
 }
