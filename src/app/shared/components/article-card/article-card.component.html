@@ -1,0 +1,17 @@
+<div class="article-card">
+  @if (article.category) {
+  <span class="article-card__tag">{{ article.category }}</span>
+  }
+
+  <div
+    class="article-card__image"
+    style="background-image: url({{ serverStaticPath + article.image }})"
+  ></div>
+  <div class="article-card__title">{{ article.title }}</div>
+  <div class="article-card__description">
+    {{ article.description }}
+  </div>
+  <a [routerLink]="'/articles/' + article.url" class="article-card__link"
+    >Читать дальше</a
+  >
+</div>

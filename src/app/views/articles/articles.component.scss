@@ -1,0 +1,145 @@
+.articles {
+  padding-top: 80px;
+  padding-bottom: 120px;
+}
+
+.articles__title {
+  font-family: 'Lora', serif;
+  font-weight: 400;
+  font-size: 38px;
+  color: #709fdc;
+  margin-top: 0;
+  letter-spacing: 10%;
+  margin-bottom: 40px;
+}
+
+.articles__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  position: relative;
+  min-height: 21px;
+}
+
+.articles__applied-filters {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.articles__applied-filter {
+  box-sizing: border-box;
+  border: 2px solid #709fdc;
+  font-family: 'Montserrat', sans-serif;
+  line-height: 130%;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #709fdc;
+  padding: 8px 20px;
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+.articles__applied-filter-button {
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  margin-left: 8px;
+  padding: 0;
+}
+
+.articles__applied-filter-button-icon {
+  stroke: #709fdc;
+}
+
+.articles__items {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 291px);
+  justify-content: space-between;
+  grid-gap: 20px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  align-items: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.pagination__pages {
+  display: flex;
+  gap: 40px;
+}
+
+.pagination__page-link {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  box-sizing: border-box;
+  cursor: pointer;
+  color: #071739;
+}
+
+.pagination__page-link_active {
+  color: #b9d5fd;
+}
+
+.pagination__arrow {
+  background: none;
+  border: none;
+  cursor: pointer;
+  &_disabled {
+    cursor: unset;
+
+    .chevron::before {
+      border-top-color: #d9d9d9;
+    }
+  }
+}
+
+.chevron {
+  position: relative;
+  display: block;
+  height: 10px;
+  top: -10px;
+  left: -2px;
+}
+
+.chevron_left {
+  rotate: 90deg;
+}
+
+.chevron_right {
+  rotate: -90deg;
+  top: 10px;
+  left: 2px;
+}
+
+.chevron::before,
+.chevron::after {
+  position: absolute;
+  display: block;
+  content: '';
+  border: 10px solid transparent;
+}
+
+.chevron::before {
+  top: 0;
+  border-top-color: #b9d5fd;
+}
+
+.chevron::after {
+  top: -2px;
+  border-top-color: #fff;
+}
+
+// .chevron_active {
+//   &::before {
+//     border-top-color: #b9d5fd;
+//   }
+// }

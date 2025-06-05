@@ -1,0 +1,96 @@
+<main class="articles">
+  <div class="container">
+    <h1 class="articles__title">Блог</h1>
+
+    <div class="articles__head">
+      <div class="articles__applied-filters">
+        @for (category of categories; track $index) {
+        <div class="articles__applied-filter">
+          <span>{{ category.name }}</span>
+          <button class="articles__applied-filter-button" (click)="removeAppliedFilter(category)">
+            <svg
+              class="articles__applied-filter-button-icon"
+              width="16"
+              height="17"
+              viewBox="0 0 16 17"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g clip-path="url(#clip0_19421_954)">
+                <line
+                  x1="1.93562"
+                  y1="3.1499"
+                  x2="13.9564"
+                  y2="15.1707"
+                  stroke-linecap="round"
+                />
+                <line
+                  x1="13.9238"
+                  y1="3.12996"
+                  x2="1.90301"
+                  y2="15.1508"
+                  stroke-linecap="round"
+                />
+              </g>
+            </svg>
+          </button>
+        </div>
+        }
+      </div>
+
+      <app-category-filter></app-category-filter>
+    </div>
+
+    <div class="articles__items">
+      @for (article of articles?.items; track $index) {
+      <app-article-card [article]="article"></app-article-card>
+      } @empty { @if (articles?.count === 0) {
+      <p>Статьи не найдены. Попробуйте изменить параметры поиска</p>
+      } }
+    </div>
+
+    @if (articles && articles.pages > 1) {
+    <div class="pagination">
+      <button
+        class="pagination__arrow"
+        [class.pagination__arrow_disabled]="activeParams.page === 1"
+        (click)="openPrevPage()"
+      >
+        <i class="chevron chevron_left"></i>
+      </button>
+      <div class="pagination__pages">
+        @for (page of pages; track $index) {
+        <a
+          tabindex="0"
+          role="button"
+          class="pagination__page-link"
+          [class.pagination__page-link_active]="
+            this.activeParams.page
+              ? this.activeParams.page === page
+              : page === 1
+          "
+          (click)="openPage(page)"
+          (keydown)="openPage(page)"
+          >{{ page }}</a
+        >
+        }
+
+        <!-- <a class="pagination__page-link pagination__page-link_active">1</a>
+        <a class="pagination__page-link">2</a>
+        <a class="pagination__page-link">3</a>
+        <a class="pagination__page-link">4</a>
+        <a class="pagination__page-link">5</a> -->
+      </div>
+      <button
+        class="pagination__arrow"
+        [class.pagination__arrow_disabled]="
+          activeParams.page === articles.pages
+        "
+        (click)="openNextPage()"
+      >
+        <i class="chevron chevron_right"></i>
+      </button>
+    </div>
+    }
+  </div>
+</main>
