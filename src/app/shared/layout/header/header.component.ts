@@ -32,41 +32,50 @@ export class HeaderComponent implements OnInit, OnDestroy {
       this.isLoggedIn = isLoggedIn;
     });
 
+    this.authService.userId$.subscribe(() => {
+      this.getUserInfo();
+    });
+
     if (this.isLoggedIn) {
-      this.userService.getUserInfo().subscribe({
-        next: (data: UserResponse | DefaultResponse) => {
-          let error = null;
-          if ((data as DefaultResponse).error !== undefined) {
-            error = (data as DefaultResponse).message;
-          }
-
-          const userResponse = data as UserResponse;
-
-          if (!userResponse.id || !userResponse.name || !userResponse.email) {
-            error = 'Ошибка получения информации о пользователе';
-          }
-
-          if (error) {
-            this.snackBar.open(error);
-            throw new Error(error);
-          }
-
-          this.userService.user = userResponse;
-          this.user = userResponse;
-        },
-        error: (errorResponse: HttpErrorResponse) => {
-          if (errorResponse.error && errorResponse.error.message) {
-            this.snackBar.open(errorResponse.error.message);
-          } else {
-            this.snackBar.open('Ошибка получения информации о пользователе');
-          }
-        },
-      });
+      this.getUserInfo();
     }
   }
 
   ngOnDestroy(): void {
     this.authService.isLoggedIn$?.unsubscribe();
+    this.authService.userId$?.unsubscribe();
+  }
+
+  getUserInfo() {
+    this.userService.getUserInfo().subscribe({
+      next: (data: UserResponse | DefaultResponse) => {
+        let error = null;
+        if ((data as DefaultResponse).error !== undefined) {
+          error = (data as DefaultResponse).message;
+        }
+
+        const userResponse = data as UserResponse;
+
+        if (!userResponse.id || !userResponse.name || !userResponse.email) {
+          error = 'Ошибка получения информации о пользователе';
+        }
+
+        if (error) {
+          this.snackBar.open(error);
+          throw new Error(error);
+        }
+
+        this.userService.user = userResponse;
+        this.user = userResponse;
+      },
+      error: (errorResponse: HttpErrorResponse) => {
+        if (errorResponse.error && errorResponse.error.message) {
+          this.snackBar.open(errorResponse.error.message);
+        } else {
+          this.snackBar.open('Ошибка получения информации о пользователе');
+        }
+      },
+    });
   }
 
   /**

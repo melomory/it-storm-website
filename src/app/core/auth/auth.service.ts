@@ -18,6 +18,8 @@ export class AuthService {
   public isLoggedIn$: Subject<boolean> = new Subject<boolean>();
   private isLoggedIn = false;
 
+  public userId$: Subject<string | null> = new Subject<string | null>();
+
   get userId(): string | null {
     return localStorage.getItem(this.userIdKey);
   }
@@ -25,6 +27,7 @@ export class AuthService {
   set userId(userId: string | null) {
     if (userId) {
       localStorage.setItem(this.userIdKey, userId);
+      this.userId$.next(userId);
     } else {
       localStorage.removeItem(this.userIdKey);
     }
@@ -77,6 +80,28 @@ export class AuthService {
     }
 
     throw throwError(() => 'Cannot find token');
+  }
+
+  /**
+   * Зарегистрировать пользователя.
+   * @param email
+   * @param password
+   * @param name
+   * @returns
+   */
+  signup(
+    email: string,
+    password: string,
+    name: string
+  ): Observable<DefaultResponse | LoginResponse> {
+    return this.http.post<DefaultResponse | LoginResponse>(
+      environment.api + 'signup',
+      {
+        email,
+        password,
+        name,
+      }
+    );
   }
 
   /**
