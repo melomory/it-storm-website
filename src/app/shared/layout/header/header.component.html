@@ -42,7 +42,8 @@
     <a class="header__phone" href="tel:+74993431334">+7 (499) 343-13-34</a>
 
     <div class="header__actions">
-      <div class="header__action" *ngIf="!isLoggedIn">
+      @if (!isLoggedIn) {
+      <div class="header__action">
         <a class="header__action-link" routerLink="/login">
           <svg
             width="24"
@@ -76,7 +77,8 @@
           <span>Войти</span>
         </a>
       </div>
-      <div class="header__action" *ngIf="isLoggedIn" [matMenuTriggerFor]="menu">
+      } @else {
+      <div class="header__action" [matMenuTriggerFor]="menu">
         <a class="header__action-link">
           <svg
             width="24"
@@ -107,9 +109,10 @@
               stroke-linejoin="round"
             />
           </svg>
-          <span>Привет, пользователь!</span>
+          <span>Привет, {{ user?.name ?? 'пользователь' }}!</span>
         </a>
       </div>
+      }
       <mat-menu #menu="matMenu">
         <button (click)="logout()" mat-menu-item>
           <span>Выйти</span>
