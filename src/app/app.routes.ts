@@ -37,6 +37,14 @@ export const routes: Routes = [
             (c) => c.ArticlesComponent
           ),
       },
+      {
+        path: 'articles/:url',
+        loadComponent: () =>
+          import('./views/article/article.component').then(
+            (c) => c.ArticleComponent
+          ),
+      },
+      { path: '**', redirectTo: '/' },
     ],
   },
 ];

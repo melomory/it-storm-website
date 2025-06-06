@@ -6,6 +6,9 @@ export interface Article {
   date: string;
   category: string;
   url: string;
+  comments?: string[];
+  commentsCount?: number;
+  text?: string;
 
   // id: string;
   // name: string;

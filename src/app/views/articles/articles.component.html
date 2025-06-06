@@ -7,7 +7,10 @@
         @for (category of categories; track $index) {
         <div class="articles__applied-filter">
           <span>{{ category.name }}</span>
-          <button class="articles__applied-filter-button" (click)="removeAppliedFilter(category)">
+          <button
+            class="articles__applied-filter-button"
+            (click)="removeAppliedFilter(category)"
+          >
             <svg
               class="articles__applied-filter-button-icon"
               width="16"
@@ -74,12 +77,6 @@
           >{{ page }}</a
         >
         }
-
-        <!-- <a class="pagination__page-link pagination__page-link_active">1</a>
-        <a class="pagination__page-link">2</a>
-        <a class="pagination__page-link">3</a>
-        <a class="pagination__page-link">4</a>
-        <a class="pagination__page-link">5</a> -->
       </div>
       <button
         class="pagination__arrow"
