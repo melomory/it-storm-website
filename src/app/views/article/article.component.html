@@ -114,7 +114,10 @@
         </div>
         <div class="article__comments">
           <h1 class="article__comments-title">Комментарии к статье</h1>
-          <!-- <p class="article__comments-info">
+          @if ((article?.commentsCount ?? 0) === 0) {
+          <p class="article__comments-info">Комментариев пока нет</p>
+          } @if (!isLoggedIn) {
+          <p class="article__comments-info">
             Чтобы оставлять комментарии,
             <a [routerLink]="'/login'" class="article__comments-info-link"
               >войдите</a
@@ -123,23 +126,33 @@
             <a [routerLink]="'/signup'" class="article__comments-info-link"
               >зарегистрируйтесь</a
             >.
-          </p> -->
-          @if ((article?.commentsCount ?? 0) === 0) {
+          </p>
+          } @else { @if ((article?.commentsCount ?? 0) === 0) {
           <p class="article__comments-info">
             Будьте первым, кто оставит свой комментарий к статье!
           </p>
           }
-
-          <form class="article__comments-form">
+          <form class="article__comments-form" [formGroup]="commentForm">
             <textarea
               class="article__comments-input"
               placeholder="Напишите Ваш комментарии к статье..."
+              formControlName="comment"
+              [ngStyle]="{
+                'border-color':
+                  commentForm.get('comment')?.invalid &&
+                  (commentForm.get('comment')?.dirty ||
+                    commentForm.get('comment')?.touched)
+                    ? 'red'
+                    : ''
+              }"
             ></textarea>
-            <button class="article__comments-button">
+            <button class="article__comments-button" (click)="addComment()">
               Опубликовать комментарий
             </button>
           </form>
+          }
           <div class="article__comments-items">
+            @for (comment of comments; track $index) {
             <div class="comment">
               <div class="comment__head">
                 <div class="comment__head-avatar">
@@ -149,20 +162,22 @@
                   />
                 </div>
                 <div class="comment__head-info">
-                  <div class="comment__head-info-user">Амелия</div>
-                  <div class="comment__head-info-date">20.01.2023 23:00</div>
+                  <div class="comment__head-info-user">
+                    {{ comment.user.name }}
+                  </div>
+                  <div class="comment__head-info-date">
+                    {{ comment.date | date : 'dd.MM.yyyy HH:mm' }}
+                  </div>
                 </div>
               </div>
               <div class="comment__body">
                 <p class="comment__body-text">
-                  Статья супер, спасибо! Взяла на заметку очень многое для себя
-                  и своей фирмы по разработке пользовательского интерфейса.
-                  Хотелось бы послушать мнение других тоже!
+                  {{ comment.text }}
                 </p>
               </div>
               <div class="comment__footer">
                 <div class="comment__footer-action">
-                  <span>51</span>
+                  <span>{{ comment.likesCount }}</span>
                   <span
                     ><svg
                       width="24"
@@ -188,7 +203,7 @@
                   </span>
                 </div>
                 <div class="comment__footer-action">
-                  <span>2</span>
+                  <span>{{ comment.dislikesCount }}</span>
                   <span
                     ><svg
                       width="24"
@@ -248,7 +263,9 @@
                 </div>
               </div>
             </div>
-            <div class="comment">
+            }
+
+            <!-- <div class="comment">
               <div class="comment__head">
                 <div class="comment__head-avatar">
                   <img
@@ -463,8 +480,12 @@
                   </span>
                 </div>
               </div>
-            </div>
-            <button class="article__comments-load-button">
+            </div> -->
+
+            @if ((article?.commentsCount ?? 0) > commentsCount) {
+            <button class="article__comments-load-button"
+            (click)="loadComments()"
+            >
               <span>Загрузить ещё комментарии</span
               ><svg
                 width="20"
@@ -479,6 +500,7 @@
                 />
               </svg>
             </button>
+            }
           </div>
         </div>
       </div>
