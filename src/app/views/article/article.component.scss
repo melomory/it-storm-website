@@ -196,6 +196,11 @@
   font-size: 16px;
   font-weight: 400;
   color: #fff;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.7;
+  }
 }
 
 .article__comments-load-button {
@@ -210,63 +215,9 @@
   background: none;
   padding: 0;
   margin-top: 60px;
+  cursor: pointer;
 }
 
 .article__comments-items {
   margin-top: 60px;
-}
-
-.comment {
-  margin-bottom: 40px;
-}
-
-.comment__head {
-  display: flex;
-  gap: 26px;
-}
-
-.comment__head-avatar {
-  width: 60px;
-  height: 60px;
-  border-radius: 50px;
-  object-fit: cover;
-}
-
-.comment__head-info-user {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 18px;
-  font-weight: 600;
-  color: #709fdc;
-  margin-bottom: 10px;
-}
-
-.comment__head-info-date {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 14px;
-  font-weight: 600;
-  color: #bebebe;
-}
-
-.comment__body-text {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 14px;
-  font-weight: 400;
-  margin-top: 15px;
-  margin-bottom: 39px;
-  line-height: 140%;
-}
-
-.comment__footer {
-  display: flex;
-  gap: 15px;
-  align-items: center;
-}
-
-.comment__footer-action {
-  display: flex;
-  align-items: center;
-  gap: 3px;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 14px;
-  font-weight: 600;
 }

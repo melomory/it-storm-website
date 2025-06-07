@@ -1,3 +1,5 @@
+import { Comment } from './comment.type';
+
 export interface Article {
   id: string;
   title: string;
@@ -6,7 +8,7 @@ export interface Article {
   date: string;
   category: string;
   url: string;
-  comments?: string[];
+  comments?: Comment[];
   commentsCount?: number;
   text?: string;
 

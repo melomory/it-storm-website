@@ -1,0 +1,75 @@
+.loader {
+  width: 160px;
+  aspect-ratio: 1;
+  transform-origin: 53% 59%;
+  animation: spin 1s infinite steps(8);
+}
+
+.bar1 {
+  background: transparent;
+  width: 30px;
+  height: 14px;
+  border-radius: 10px;
+  transform: rotate(315deg) translate(45px, 109px);
+}
+
+.bar2 {
+  background: #c4d9fd;
+  width: 30px;
+  height: 14px;
+  border-radius: 10px;
+  transform: rotate(0) translate(127px, 74px);
+}
+
+.bar3 {
+  background: #c4d9fd;
+  width: 44px;
+  height: 14px;
+  border-radius: 10px;
+  transform: rotate(45deg) translate(145px, -1px);
+}
+
+.bar4 {
+  background: #73a1fb;
+  width: 44px;
+  height: 14px;
+  border-radius: 10px;
+  transform: rotate(90deg) translate(104px, -62px);
+}
+
+.bar5 {
+  background: #5286fa;
+  width: 42px;
+  height: 14px;
+  border-radius: 10px;
+  transform: rotate(135deg) translate(37px, -67px);
+}
+
+.bar6 {
+  background: #3d6deb;
+  width: 42px;
+  height: 14px;
+  border-radius: 10px;
+  transform: rotate(180deg) translate(-4px, -18px);
+}
+
+.bar7 {
+  background: #355ec9;
+  width: 42px;
+  height: 14px;
+  border-radius: 10px;
+  transform: rotate(225deg) translate(11px, 42px);
+}
+.bar8 {
+  background: #2d50a7;
+  width: 42px;
+  height: 14px;
+  border-radius: 10px;
+  transform: rotate(270deg) translate(68px, 63px);
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
