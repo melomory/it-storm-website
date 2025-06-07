@@ -126,6 +126,13 @@
     margin: 0 0 20px 0;
   }
 
+  &__form-text {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    line-height: 130%;
+    font-size: 14px;
+  }
+
   &__form-inputs {
     display: flex;
     flex-direction: column;
@@ -136,8 +143,8 @@
     margin-top: 20px;
   }
 
-  // .order-call-popup-content div {
-  //   font-size: 20px;
-  //   margin-bottom: 5px;
-  // }
+  &__form-button_small {
+    margin-top: 20px;
+    align-self: center;
+  }
 }

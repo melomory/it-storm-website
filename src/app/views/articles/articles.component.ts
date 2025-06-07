@@ -9,10 +9,11 @@ import { ActivePramUtil } from '../../shared/utils/active-params.util';
 import { CategoryFilterComponent } from '../../shared/components/category-filter/category-filter.component';
 import { Category } from '../../models/category.type';
 import { CategoryService } from '../../shared/services/category.service';
+import { LoaderComponent } from '../../shared/components/loader/loader.component';
 
 @Component({
   selector: 'app-articles',
-  imports: [ArticleCardComponent, CategoryFilterComponent],
+  imports: [ArticleCardComponent, CategoryFilterComponent, LoaderComponent],
   templateUrl: './articles.component.html',
   styleUrl: './articles.component.scss',
 })
@@ -25,6 +26,7 @@ export class ArticlesComponent implements OnInit {
   articles!: Articles;
   activeParams: ActiveParamsType = { categories: [] };
   pages: number[] = [];
+  needToShowLoader = false;
 
   get categories(): Category[] {
     return this.categoryService.categories.filter(
@@ -49,8 +51,10 @@ export class ArticlesComponent implements OnInit {
           return;
         }
 
+        this.needToShowLoader = true;
         this.articleService.getArticles(this.activeParams).subscribe((data) => {
           this.articles = data;
+          this.needToShowLoader = false;
 
           this.pages = Array.from(
             { length: this.articles.pages },

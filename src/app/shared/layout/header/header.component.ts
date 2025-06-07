@@ -46,7 +46,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.authService.userId$?.unsubscribe();
   }
 
-  getUserInfo() {
+  /**
+   * Получить информацию о пользователе.
+   */
+  getUserInfo(): void {
     this.userService.getUserInfo().subscribe({
       next: (data: UserResponse | DefaultResponse) => {
         let error = null;
@@ -81,7 +84,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   /**
    * Выполнить выход из аккаунта.
    */
-  logout() {
+  logout(): void {
     this.authService.logout().subscribe({
       next: () => this.doLogout(),
       error: () => this.doLogout(),

@@ -13,6 +13,12 @@ import { CommentActionResponse } from '../../models/comment-action-response.type
 export class CommentService {
   private http: HttpClient = inject(HttpClient);
 
+  /**
+   * Добавить комментарий.
+   * @param text Текст комментария.
+   * @param articleId Ид статьи.
+   * @returns Результат запроса.
+   */
   addComment(text: string, articleId: string): Observable<DefaultResponse> {
     return this.http.post<DefaultResponse>(environment.api + 'comments', {
       text,
@@ -20,6 +26,12 @@ export class CommentService {
     });
   }
 
+  /**
+   * Получить комментарии.
+   * @param offset Смещение по количеству комментариев, которые необходимо запросить.
+   * @param articleId Ид статьи.
+   * @returns Результат запроса.
+   */
   getComments(
     offset: number,
     articleId: string

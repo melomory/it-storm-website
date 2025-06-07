@@ -61,7 +61,10 @@
             class="footer__info-item-text footer__info-item-text-link"
             >+7 (499) 343-13-34</a
           >
-          <button class="button button_small" (click)="requestFreeConsultation()">
+          <button
+            class="button button_small"
+            (click)="requestFreeConsultation()"
+          >
             Перезвоните мне
           </button>
         </li>
@@ -157,15 +160,64 @@
         />
       </svg>
     </button>
-    <form class="free-consultation-popup__form">
+    <form
+      class="free-consultation-popup__form"
+      (ngSubmit)="sendRequestOnSubmit()"
+      [formGroup]="requestFreeConsultationForm"
+    >
       <h2 class="free-consultation-popup__form-title">
-        Закажите бесплатную консультацию!
+        @if (isRequestSent) {Спасибо за вашу заявку! } @else { Закажите
+        бесплатную консультацию! }
       </h2>
+      @if (isRequestSent) {
+      <p class="free-consultation-popup__form-text">
+        Мы свяжемся с вами при первой же возможности.
+      </p>
+      <button
+        class="button button_big free-consultation-popup__form-button free-consultation-popup__form-button_small"
+        (click)="closePopup()"
+      >
+        Окей
+      </button>
+      } @else {
       <div class="free-consultation-popup__form-inputs">
-        <input type="text" class="input" placeholder="Ваше имя" />
-        <input type="tel" class="input" placeholder="Ваш номер телефона" />
+        <input
+          type="text"
+          class="input"
+          placeholder="Ваше имя"
+          formControlName="name"
+          [ngStyle]="{
+            'border-color':
+              requestFreeConsultationForm.get('name')?.invalid &&
+              (requestFreeConsultationForm.get('name')?.dirty ||
+                requestFreeConsultationForm.get('name')?.touched)
+                ? 'red'
+                : ''
+          }"
+        />
+        <input
+          type="tel"
+          class="input"
+          placeholder="Ваш номер телефона"
+          formControlName="phone"
+          [ngStyle]="{
+            'border-color':
+              requestFreeConsultationForm.get('phone')?.invalid &&
+              (requestFreeConsultationForm.get('phone')?.dirty ||
+                requestFreeConsultationForm.get('phone')?.touched)
+                ? 'red'
+                : ''
+          }"
+        />
       </div>
-      <button class="button button_big free-consultation-popup__form-button">Заказать консультацию</button>
+      <button class="button button_big free-consultation-popup__form-button">
+        Заказать консультацию
+      </button>
+      @if (isRequestSentError) {
+      <p class="service-popup__form-text service-popup__form-text_error">
+        Произошла ошибка при отправке формы, попробуйте еще раз.
+      </p>
+      } }
     </form>
   </div>
 </ng-template>
