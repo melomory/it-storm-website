@@ -35,6 +35,9 @@ export class SignupComponent {
     isAgree: [false, [Validators.requiredTrue]],
   });
 
+  /**
+   * Зарегистрировать пользователя.
+   */
   signup() {
     if (
       this.signupForm.valid &&

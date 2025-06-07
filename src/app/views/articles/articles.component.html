@@ -49,7 +49,9 @@
       <app-article-card [article]="article"></app-article-card>
       } @empty { @if (articles?.count === 0) {
       <p>Статьи не найдены. Попробуйте изменить параметры поиска</p>
-      } }
+      } } @if (needToShowLoader) {
+      <app-loader class="articles__items-loader"></app-loader>
+      }
     </div>
 
     @if (articles && articles.pages > 1) {

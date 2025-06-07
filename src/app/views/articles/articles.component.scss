@@ -62,6 +62,13 @@
   grid-gap: 20px;
 }
 
+.articles__items-loader {
+  grid-column: 1/-1;
+  justify-self: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 .pagination {
   display: flex;
   justify-content: center;

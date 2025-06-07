@@ -23,6 +23,14 @@ export class ArticleService {
   }
 
   /**
+   * Получить популярные статьи.
+   * @returns Популярные статьи.
+   */
+  getPopularArticles(): Observable<Article[]> {
+    return this.http.get<Article[]>(environment.api + 'articles/top');
+  }
+
+  /**
    * Получить связанные статьи.
    * @param url URL основной статьи.
    * @returns Связанные статьи.

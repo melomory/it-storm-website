@@ -132,6 +132,17 @@
     margin: 0 0 20px 0;
   }
 
+  &__form-text {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    line-height: 130%;
+    font-size: 14px;
+
+    &_error {
+      color: #ff0000;
+    }
+  }
+
   &__form-inputs {
     display: flex;
     flex-direction: column;
@@ -140,6 +151,11 @@
 
   &__form-button {
     margin-top: 20px;
+  }
+
+  &__form-button_small {
+    margin-top: 20px;
+    align-self: center;
   }
 }
 
@@ -213,7 +229,7 @@
   padding-right: 33px;
 }
 
-.about {
+.about__container {
   margin-bottom: 120px;
   display: flex;
   gap: 68px;
@@ -500,9 +516,6 @@
       opacity: 0.6;
     }
   }
-}
-
-.contacts {
 }
 
 .contacts__container {
