@@ -181,34 +181,57 @@
       </button>
       } @else {
       <div class="free-consultation-popup__form-inputs">
-        <input
-          type="text"
-          class="input"
-          placeholder="Ваше имя"
-          formControlName="name"
-          [ngStyle]="{
-            'border-color':
-              requestFreeConsultationForm.get('name')?.invalid &&
-              (requestFreeConsultationForm.get('name')?.dirty ||
-                requestFreeConsultationForm.get('name')?.touched)
-                ? 'red'
-                : ''
-          }"
-        />
-        <input
-          type="tel"
-          class="input"
-          placeholder="Ваш номер телефона"
-          formControlName="phone"
-          [ngStyle]="{
-            'border-color':
-              requestFreeConsultationForm.get('phone')?.invalid &&
-              (requestFreeConsultationForm.get('phone')?.dirty ||
-                requestFreeConsultationForm.get('phone')?.touched)
-                ? 'red'
-                : ''
-          }"
-        />
+        <div class="free-consultation-popup__form-inputs-item">
+          <input
+            type="text"
+            class="input"
+            placeholder="Ваше имя"
+            formControlName="name"
+            [ngStyle]="{
+              'border-color':
+                requestFreeConsultationForm.get('name')?.invalid &&
+                (requestFreeConsultationForm.get('name')?.dirty ||
+                  requestFreeConsultationForm.get('name')?.touched)
+                  ? 'red'
+                  : ''
+            }"
+          />
+          @if (requestFreeConsultationForm.get('name')?.invalid &&
+          (requestFreeConsultationForm.get('name')?.dirty ||
+          requestFreeConsultationForm.get('name')?.touched)) {
+          <p
+            class="input-error-massage free-consultation-popup__input-error-massage"
+          >
+            Введите имя
+          </p>
+          }
+        </div>
+
+        <div class="free-consultation-popup__form-inputs-item">
+          <input
+            type="tel"
+            class="input"
+            placeholder="Ваш номер телефона"
+            formControlName="phone"
+            [ngStyle]="{
+              'border-color':
+                requestFreeConsultationForm.get('phone')?.invalid &&
+                (requestFreeConsultationForm.get('phone')?.dirty ||
+                  requestFreeConsultationForm.get('phone')?.touched)
+                  ? 'red'
+                  : ''
+            }"
+          />
+          @if (requestFreeConsultationForm.get('phone')?.invalid &&
+          (requestFreeConsultationForm.get('phone')?.dirty ||
+          requestFreeConsultationForm.get('phone')?.touched)) {
+          <p
+            class="input-error-massage free-consultation-popup__input-error-massage"
+          >
+            Введите телефон
+          </p>
+          }
+        </div>
       </div>
       <button class="button button_big free-consultation-popup__form-button">
         Заказать консультацию

@@ -139,6 +139,10 @@
     gap: 5px;
   }
 
+  &__form-inputs-item {
+
+  }
+
   &__form-button {
     margin-top: 20px;
   }
@@ -147,4 +151,9 @@
     margin-top: 20px;
     align-self: center;
   }
+}
+
+.free-consultation-popup__input-error-massage {
+  text-align: left;
+  padding-left: 20px;
 }

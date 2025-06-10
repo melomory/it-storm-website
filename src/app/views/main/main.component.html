@@ -216,34 +216,56 @@
                 <option value="Реклама">Реклама</option>
                 <option value="Копирайтинг">Копирайтинг</option>
               </select>
-              <input
-                type="text"
-                class="input"
-                placeholder="Ваше имя"
-                formControlName="name"
-                [ngStyle]="{
-                  'border-color':
-                    requestOrderForm.get('name')?.invalid &&
-                    (requestOrderForm.get('name')?.dirty ||
-                      requestOrderForm.get('name')?.touched)
-                      ? 'red'
-                      : ''
-                }"
-              />
-              <input
-                type="tel"
-                class="input"
-                placeholder="Ваш номер телефона"
-                formControlName="phone"
-                [ngStyle]="{
-                  'border-color':
-                    requestOrderForm.get('phone')?.invalid &&
-                    (requestOrderForm.get('phone')?.dirty ||
-                      requestOrderForm.get('phone')?.touched)
-                      ? 'red'
-                      : ''
-                }"
-              />
+              <div class="service-popup__form-inputs-item">
+                <input
+                  type="text"
+                  class="input"
+                  placeholder="Ваше имя"
+                  formControlName="name"
+                  [ngStyle]="{
+                    'border-color':
+                      requestOrderForm.get('name')?.invalid &&
+                      (requestOrderForm.get('name')?.dirty ||
+                        requestOrderForm.get('name')?.touched)
+                        ? 'red'
+                        : ''
+                  }"
+                />
+                @if (requestOrderForm.get('name')?.invalid &&
+                (requestOrderForm.get('name')?.dirty ||
+                requestOrderForm.get('name')?.touched)) {
+                <p
+                  class="input-error-massage service-popup__input-error-massage"
+                >
+                  Введите имя
+                </p>
+                }
+              </div>
+              <div class="service-popup__form-inputs-item">
+                <input
+                  type="tel"
+                  class="input"
+                  placeholder="Ваш номер телефона"
+                  formControlName="phone"
+                  [ngStyle]="{
+                    'border-color':
+                      requestOrderForm.get('phone')?.invalid &&
+                      (requestOrderForm.get('phone')?.dirty ||
+                        requestOrderForm.get('phone')?.touched)
+                        ? 'red'
+                        : ''
+                  }"
+                />
+                @if (requestOrderForm.get('phone')?.invalid &&
+                (requestOrderForm.get('phone')?.dirty ||
+                requestOrderForm.get('phone')?.touched)) {
+                <p
+                  class="input-error-massage service-popup__input-error-massage"
+                >
+                  Введите телефон
+                </p>
+                }
+              </div>
             </div>
             <button class="button button_big service-popup__form-button">
               Оставить заявку
@@ -438,10 +460,12 @@
       <h1 class="popular-articles__title">Популярные статьи из блога</h1>
       <div class="popular-articles__items">
         @for (article of popularArticles; track $index) {
-          <app-article-card [article]="article"></app-article-card>
+        <app-article-card [article]="article"></app-article-card>
         }
       </div>
-      <a routerLink="/articles" class="popular-articles__link">Перейти в блог</a>
+      <a routerLink="/articles" class="popular-articles__link"
+        >Перейти в блог</a
+      >
     </div>
   </section>
 

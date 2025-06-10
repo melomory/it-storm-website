@@ -3,54 +3,113 @@
     <form class="signup__form" [formGroup]="signupForm">
       <h1 class="signup__form-title">Регистрация на сайте</h1>
       <div class="signup__form-inputs">
-        <input
-          type="text"
-          class="input"
-          placeholder="Ваше имя"
-          formControlName="name"
-          [ngStyle]="{
-            'border-color':
-              signupForm.get('name')?.invalid &&
-              (signupForm.get('name')?.dirty || signupForm.get('name')?.touched)
-                ? 'red'
-                : ''
-          }"
-        />
-        <input
-          type="email"
-          class="input"
-          placeholder="Электронная почта"
-          formControlName="email"
-          [ngStyle]="{
-            'border-color':
-              signupForm.get('email')?.invalid &&
-              (signupForm.get('email')?.dirty ||
-                signupForm.get('email')?.touched)
-                ? 'red'
-                : ''
-          }"
-        />
-        <input
-          type="password"
-          class="input"
-          placeholder="Пароль"
-          formControlName="password"
-          [ngStyle]="{
-            'border-color':
-              signupForm.get('password')?.invalid &&
-              (signupForm.get('password')?.dirty ||
-                signupForm.get('password')?.touched)
-                ? 'red'
-                : ''
-          }"
-        />
+        <div class="signup__form-inputs-item">
+          <input
+            type="text"
+            class="input"
+            placeholder="Ваше имя"
+            formControlName="name"
+            [ngStyle]="{
+              'border-color':
+                signupForm.get('name')?.invalid &&
+                (signupForm.get('name')?.dirty ||
+                  signupForm.get('name')?.touched)
+                  ? 'red'
+                  : ''
+            }"
+          />
+          @if (signupForm.get('name')?.invalid &&
+          signupForm.get('name')?.hasError('required') &&
+          (signupForm.get('name')?.dirty || signupForm.get('name')?.touched)) {
+          <p class="input-error-massage signup__input-error-massage">
+            Введите имя
+          </p>
+          } @if (signupForm.get('name')?.invalid &&
+          signupForm.get('name')?.hasError('pattern') &&
+          (signupForm.get('name')?.dirty || signupForm.get('name')?.touched)) {
+          <p class="input-error-massage signup__input-error-massage">
+            Имя должно начинаться с прописной буквы и должно содержать только
+            кириллицу.
+          </p>
+          }
+        </div>
+        <div class="signup__form-inputs-item">
+          <input
+            type="email"
+            class="input"
+            placeholder="Электронная почта"
+            formControlName="email"
+            [ngStyle]="{
+              'border-color':
+                signupForm.get('email')?.invalid &&
+                (signupForm.get('email')?.dirty ||
+                  signupForm.get('email')?.touched)
+                  ? 'red'
+                  : ''
+            }"
+          />
+          @if (signupForm.get('email')?.invalid &&
+          signupForm.get('name')?.hasError('email') &&
+          signupForm.get('email')?.hasError('required') &&
+          (signupForm.get('email')?.dirty || signupForm.get('email')?.touched))
+          {
+          <p class="input-error-massage signup__input-error-massage">
+            Введите email
+          </p>
+          }
+        </div>
+        <div class="signup__form-inputs-item">
+          <input
+            type="password"
+            class="input"
+            placeholder="Пароль"
+            formControlName="password"
+            [ngStyle]="{
+              'border-color':
+                signupForm.get('password')?.invalid &&
+                (signupForm.get('password')?.dirty ||
+                  signupForm.get('password')?.touched)
+                  ? 'red'
+                  : ''
+            }"
+          />
+          @if (signupForm.get('password')?.invalid &&
+          signupForm.get('password')?.hasError('required') &&
+          (signupForm.get('password')?.dirty ||
+          signupForm.get('password')?.touched)) {
+          <p class="input-error-massage signup__input-error-massage">
+            Введите пароль
+          </p>
+          } @if (signupForm.get('password')?.invalid &&
+          signupForm.get('password')?.hasError('pattern') &&
+          (signupForm.get('password')?.dirty ||
+          signupForm.get('password')?.touched)) {
+          <p class="input-error-massage signup__input-error-massage">
+            Пароль должен содержать не менее 1 цифры, 1 прописной буквы, 1
+            строчной буквы. Допускается только латинские буквы.
+          </p>
+          }
+        </div>
+
         <div class="signup__form-inputs-checkbox">
           <input type="checkbox" id="is-agree" formControlName="isAgree" />
           <label for="is-agree"
-            >Я принимаю <a routerLink="/legal" fragment="terms">условия пользовательского соглашения</a> и
-            даю
-            <a routerLink="/legal" fragment="consent">согласие на обработку персональных данных</a>.</label
+            >Я принимаю
+            <a routerLink="/legal" fragment="terms"
+              >условия пользовательского соглашения</a
+            >
+            и даю
+            <a routerLink="/legal" fragment="consent"
+              >согласие на обработку персональных данных</a
+            >.</label
           >
+          @if (signupForm.get('isAgree')?.invalid &&
+          (signupForm.get('isAgree')?.dirty ||
+          signupForm.get('isAgree')?.touched)) {
+          <p class="input-error-massage signup__input-error-massage">
+            Необходимо дать согласие
+          </p>
+          }
         </div>
       </div>
       <button
