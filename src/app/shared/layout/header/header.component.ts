@@ -7,10 +7,11 @@ import { UserService } from '../../services/user.service';
 import { DefaultResponse } from '../../../models/default-response.type';
 import { UserResponse } from '../../../models/user-response.type';
 import { HttpErrorResponse } from '@angular/common/http';
+import { ScrollAnchorDirective } from '../../directives/scroll-anchor.directive';
 
 @Component({
   selector: 'app-header',
-  imports: [RouterLink, RouterLinkActive, MatMenuModule],
+  imports: [RouterLink, RouterLinkActive, MatMenuModule, ScrollAnchorDirective],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })

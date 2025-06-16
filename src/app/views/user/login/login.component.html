@@ -3,33 +3,50 @@
     <form class="login__form" [formGroup]="loginForm">
       <h1 class="login__form-title">Войти в личный кабинет</h1>
       <div class="login__form-inputs">
-        <input
-          type="email"
-          class="input"
-          placeholder="Электронная почта"
-          formControlName="email"
-          [ngStyle]="{
-            'border-color':
-              loginForm.get('email')?.invalid &&
-              (loginForm.get('email')?.dirty || loginForm.get('email')?.touched)
-                ? 'red'
-                : ''
-          }"
-        />
-        <input
-          type="password"
-          class="input"
-          placeholder="Пароль"
-          formControlName="password"
-          [ngStyle]="{
-            'border-color':
-              loginForm.get('password')?.invalid &&
-              (loginForm.get('password')?.dirty ||
-                loginForm.get('password')?.touched)
-                ? 'red'
-                : ''
-          }"
-        />
+        <div class="login__form-inputs-item">
+          <input
+            type="email"
+            class="input"
+            placeholder="Электронная почта"
+            formControlName="email"
+            [ngStyle]="{
+              'border-color':
+                loginForm.get('email')?.invalid &&
+                (loginForm.get('email')?.dirty ||
+                  loginForm.get('email')?.touched)
+                  ? 'red'
+                  : ''
+            }"
+          />
+          @if (loginForm.get('email')?.invalid && (loginForm.get('email')?.dirty
+          || loginForm.get('email')?.touched)) {
+          <p class="input-error-massage login__input-error-massage">
+            Введите email
+          </p>
+          }
+        </div>
+        <div class="login__form-inputs-item">
+          <input
+            type="password"
+            class="input"
+            placeholder="Пароль"
+            formControlName="password"
+            [ngStyle]="{
+              'border-color':
+                loginForm.get('password')?.invalid &&
+                (loginForm.get('password')?.dirty ||
+                  loginForm.get('password')?.touched)
+                  ? 'red'
+                  : ''
+            }"
+          />
+          @if (loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty
+          || loginForm.get('password')?.touched)) {
+          <p class="input-error-massage login__input-error-massage">
+            Введите пароль
+          </p>
+          }
+        </div>
         <div class="login__form-inputs-checkbox">
           <input
             type="checkbox"

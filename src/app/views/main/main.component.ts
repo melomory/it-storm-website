@@ -8,7 +8,6 @@ import {
 } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
 import { RequestService } from '../../shared/services/request.service';
 import { Request } from '../../models/request.type';
@@ -17,12 +16,20 @@ import { DefaultResponse } from '../../models/default-response.type';
 import { NgStyle } from '@angular/common';
 import { ArticleService } from '../../shared/services/article.service';
 import { Article } from '../../models/article.type';
-import { ArticleCardComponent } from "../../shared/components/article-card/article-card.component";
+import { ArticleCardComponent } from '../../shared/components/article-card/article-card.component';
 import { RouterLink } from '@angular/router';
+import { ScrollSectionDirective } from '../../shared/directives/scroll-section.directive';
 
 @Component({
   selector: 'app-main',
-  imports: [CarouselModule, ReactiveFormsModule, NgStyle, ArticleCardComponent, RouterLink],
+  imports: [
+    CarouselModule,
+    ReactiveFormsModule,
+    NgStyle,
+    ArticleCardComponent,
+    RouterLink,
+    ScrollSectionDirective,
+  ],
   templateUrl: './main.component.html',
   styleUrl: './main.component.scss',
 })
@@ -83,7 +90,6 @@ export class MainComponent implements OnInit {
 
   private dialog: MatDialog = inject(MatDialog);
   private fb: FormBuilder = inject(FormBuilder);
-  private snackBar: MatSnackBar = inject(MatSnackBar);
   private requestService: RequestService = inject(RequestService);
   private articleService: ArticleService = inject(ArticleService);
 
